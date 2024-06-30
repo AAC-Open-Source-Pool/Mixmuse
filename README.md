@@ -7,4 +7,4 @@
 <b>Team Member 2:</b><p> Mohd Sajid Zubair</p>
 <b>Team Member 3:</b><p> Emmadi Rohit</p>
 <b>Team Member 4:</b><p> K Ashritha</p>
-<b>Team Member 4:</b><p> Vamshi</p>
+<b>Team Member 5:</b><p> Vamshi</p>
