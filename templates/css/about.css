@@ -1,0 +1,63 @@
+body{
+    background-color: #eae7dc;
+}
+*{
+    text-decoration: none;
+}
+
+.navbar{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.nav-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo a{
+    color: #1a1826;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+li{
+    list-style: none;
+    display: inline;
+}
+
+li a{
+    color: #1a1826;
+    font-size: 25px;
+    margin-right: 20px;
+}
+button{
+    background-color: #1a1826;
+    font-size: 20px;
+    padding: 15px;
+    margin-right: 20px;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+
+button a{
+    color: white;
+    font-style: bold;
+}
+
+.mission{
+    font-size: 65px;
+    text-align: center;
+    color: #e13528;
+    margin-top: 30px;
+    
+}
+
+.mission-para{
+    text-align: center;
+    color: #51483b;
+    font-size: 25px;
+    margin-top: 15px;
+    padding: 30px;
+}

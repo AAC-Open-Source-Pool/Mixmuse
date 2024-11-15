@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="signup.css">
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #eae7dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.signup{
+    width: 420px;
+    padding: 29px;
+    margin: 0 28px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #d8c385;
+    box-shadow: 0 15px 20px rgba(0,0,0,0.2);
+}
+
+.signup h1{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #1a1826;
+    padding-bottom: 28px;
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.input{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+}
+.input label{
+    font-size: 16px;
+}
+
+.input:nth-child(2n){
+    justify-content: end;
+}
+
+
+
+.input label ,.gender-title{
+    width: 95%;
+    color: #1a1826;
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.gender-title{
+    margin-right: 5px;
+    font-size: 16px;
+}
+
+.input input{
+    background-color: transparent;
+    height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 20px;
+    border: 1.5px solid #1a1826;
+    outline: none;
+    font-size: 13px;
+}
+.input input::placeholder{
+    color: #1a1826;
+}
+
+.gender-category label{
+    font-size: 18px;
+    padding: 0 20px 0 5px;
+}
+
+.gender-category{
+    color: #1a1826;
+}
+
+.gender-category label, .gender-category input{
+    cursor: pointer;
+}
+
+.user-type-category label{
+    font-size: 18px;
+    padding: 0 20px 0 5px;
+}
+
+.user-type-category{
+    padding-top: 15px;
+    padding-left: 19px;
+    color: #1a1826;
+}
+
+.user-type-category label, .gender-category input{
+    cursor: pointer;
+}
+
+
+
+.signup-btn{
+    margin: 15px 0;
+}
+
+.signup-btn button{
+    width: 100%;
+    margin-top: 10px;
+    color: #1a1826;
+    font-size: 19px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor: pointer;
+    font-weight: 600;
+    padding: 15px;
+}
+.error_message{
+    color: red;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="signup">
+        <div class="error_message">
+            {% if error_msg %}
+                <p>{{ error_msg }}</p>
+            {% endif %}
+        </div>
+        <form action="" method="post">
+            <h1>Sign Up</h1>
+            <div class="content">
+                <div class="input">
+                    <label for="name">Fullname</label>
+                    <input type="text" placeholder="Enter Fullname" name="name" required>
+                </div>
+                <div class="input">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Enter Username" name="user" required>
+                </div>
+                <div class="input">
+                    <label for="email">Email</label>
+                    <input type="email" placeholder="Enter valid Email address" name="email" required>
+                </div>
+                <div class="input">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" placeholder="Enter phone number" name="phone" required>
+                </div>
+                <div class="input">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Enter password" name="password" required>
+                </div>
+                <div class="input">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" placeholder="Confirm your password" name="confirm-password" required>
+                </div>
+                <div class="gender-category">
+                    <span class="gender-title">Gender</span>
+                    <input type="radio" name="gender" id="male" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="Female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="user-type-category">
+                    <span class="gender-title">I am a: </span>
+                    <input type="radio" name="website_user" id="artist" value="artist">
+                    <label for="male">Artist</label>
+                    <input type="radio" name="website_user" id="employer" value="employer">
+                    <label for="female">Employer</label>
+                </div>
+
+            </div>
+            <div class="signup-btn">
+                <button>Sign Up</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

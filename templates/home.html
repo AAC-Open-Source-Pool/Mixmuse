@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page</title>
+    <link rel="stylesheet" href="css/home.css">
+    <style>
+        body{
+    background-color: #eae7dc;
+}
+*{
+    text-decoration: none;
+}
+
+.navbar{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.nav-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo a{
+    color: #1a1826;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+li{
+    list-style: none;
+    display: inline;
+}
+
+li a{
+    color: #1a1826;
+    font-size: 25px;
+    margin-right: 20px;
+}
+button{
+    background-color: #1a1826;
+    font-size: 20px;
+    padding: 15px;
+    margin-right: 20px;
+    border-radius: 12px;
+    border: 1px solid black;
+}
+button a{
+    color: white;
+    font-style: bold;
+}
+
+.moto{
+    color:#e13528;
+    font-size:60px;
+    text-align: center;
+    margin-top: 7%;
+}
+
+.sub-note{
+    color: #1a1826;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 25px;
+    margin-right: 5px;
+}
+
+#bottom{
+    text-align: center;
+    margin-top: 60px;
+}
+
+#bottom button[disabled]{
+    color:white;
+    background-color: #1a1826;
+    border-radius: 22px;
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-div">
+            <div class="nav-logo"><a href="/">MIXMUSE</a></div>
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/login">Login</a></li>
+                <button><a href="/signup">Artist Sign-up</a></button>
+                <button><a href="/signup">Employer Sign-up</a></button>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="moto">Unleash Your Sound track - Where <br>Collaboration hits the right note!</div>
+    <div class="sub-note">Empowering creators to find the perfect musical <br>accompaniment through seamless collaboration.</div>
+
+    <div id="bottom">
+        <button disabled="disabled"><a href="/about">Learn more</a></button>
+    </div>
+
+</body>
+</html>

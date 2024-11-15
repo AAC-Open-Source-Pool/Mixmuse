@@ -1,0 +1,159 @@
+body{
+    background-color: #eae7dc;
+}
+*{
+    text-decoration: none;
+}
+
+.navbar{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.nav-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo a{
+    color: #1a1826;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.navbar ul li{
+    margin-right: 50px;
+}
+.navbar ul li i{
+    font-size: 35px;
+}
+
+li{
+    list-style: none;
+    display: inline;
+}
+
+li a i{
+    color: #1a1826;
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.sub-menu-wrap{
+    position: absolute;
+    top: 80px;
+    right: 8%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+    z-index: 1;
+}
+
+.sub-menu-wrap.open-menu{
+    max-height: 400px;
+}
+.sub-menu{
+    background: white;
+    margin: 10px;
+    padding: 20px;
+}
+.sub-menu .user-info i{
+    font-size: 44px;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+
+}
+.sub-menu .user-info h3{
+    font-weight: 500;
+}
+.user-info i{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 30px;
+}
+
+.sub-menu hr{
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-color: #1a1826;
+    margin: 1px 0 15px;
+}
+
+.sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #1a1826;
+    margin: 12px 0;
+}
+
+.sub-menu-link p{
+    width: 100%;
+}
+
+
+.edit{
+    text-decoration: none;
+    color: #1a1826;
+    width: 100%;
+}
+.edit:hover {
+    font-weight: bold;
+}
+
+.sub-menu-link i{
+    background-color: #d8c385;
+    border-radius: 50%;
+    padding: 8px;
+    margin-right: 10px;
+    width: 30px;
+    font-size: 28px;
+}
+
+.sub-menu-link span{
+    font-size: 22px;
+}
+
+.sub-menu-link:hover span{
+    transform: translateX(5px);
+}
+
+.sub-menu-link:hover p{
+    font-weight: bold;
+}
+
+.post{
+    font-size: 30px;
+    color: #1a1826;
+    font-weight: bold;
+}
+
+.fixed-btn{
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    background-color: #1a1826;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+.plus a{
+    font-weight: bold;
+    font-size: 24px;
+    margin: 5px 10px;
+    color: white;
+}
+.fixed-btn:hover{
+    transform: scale(1.03);
+}
