@@ -495,6 +495,12 @@ def requirments(job_id):
     cursor.execute("SELECT job_title, company_name, company_address,job_type, salary,duration,open_positions, requirements, job_description, employee_responsibilities, what_your_company_offers FROM posts WHERE id = ?", (job_id,))
     job = cursor.fetchone()
 
+    username = session['username']
+    query = "SELECT * from users where username = '"+username+"' "
+    cursor.execute(query)
+
+    user_data = cursor.fetchone()
+
     connection.close()
 
     if job:
@@ -511,7 +517,7 @@ def requirments(job_id):
             'employee_responsibilities': job[9],
             'what_your_company_offers': job[10]
         }
-        return render_template('reqexp.html', job=job_details)
+        return render_template('reqexp.html', job=job_details,user_data=user_data)
     else:
         return "Job not found", 404
 
