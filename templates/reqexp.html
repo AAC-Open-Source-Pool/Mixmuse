@@ -358,26 +358,33 @@ hr{
         </div>
         <hr>
         
-
         {% if session['website_user'] == 'artist' %}
-        <form action="/upload_audition" method="POST" enctype="multipart/form-data">
+            {% if already_applied %}
+                <div class="apply">
+                <button class="app-btn" disabled>APPLIED</button>
+                </div>
+            {% else %}
+            <form action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data" id="uploadForm">
             <h3>Upload Audition Video</h3>
             <div class="form-group">
-              <label for="exampleFormControlFile1">You can sing a cover song or an orignal to showcase your abilities : </label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1" name="audition_video" accept="video/*" required>
+                <label for="exampleFormControlFile1">You can sing a cover song or an original to showcase your abilities:</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="video" accept=".mp4">
             </div>
-          </form>
-        <hr>
-
-        <div class="apply">
-            <button class="app-btn">APPLY</button>
-        </div>
+                <input type="hidden" name="job_id" value="{{ job.id }}">
+                <div class="apply">
+                    <button type="submit" class="app-btn" id="applyButton">APPLY</button>
+                </div>
+            </form>
+            {% endif %}
+            <hr>
         {% else %}
-        <div class="apply">
-            <a href="/applicants"><button class="app-btn">VIEW APPLICANTS</button></a>
-            <button class="app-btn">DELETE JOB</button>
-        </div>
+            <div class="apply">
+                <input type="hidden" name="job_id" value="{{ job.id }}">
+                <a href="/vapplicants/{{job.id}}"><button class="app-btn">VIEW APPLICANTS</button></a>
+                <button class="app-btn">DELETE JOB</button>
+            </div>
         {% endif %}
+
 
         
     </div>

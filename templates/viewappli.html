@@ -294,6 +294,30 @@ li a i{
         <h2>Applicants</h2>
 
         <div class="jobs">
+
+            {% if applicants %}
+                <ul class="applicant-list">
+                    {% for applicant in applicants %}
+                    
+                        <li class="applicant-item">
+                            <a href="{{url_for('viewappliprofile', user=applicant[0])}}"><span class="applicant-username">{{ applicant[0] }}</span></a><!-- Display applicant's username -->
+                            <div class="applicant-actions">    
+                                <!-- <a href="{{ url_for('audition_video', filename=applicant[3]) }}" target="blank"><button class="app-btn">View Audition Video</button></a>                                                                 -->
+                                <a href="{{ url_for('audition_video', filename=applicant[1]) }}" 
+                                target="_blank" 
+                                class="app-btn">View Audition Video</a>
+                                
+                                <button class="app-btn">Accept</button>
+                                <button class="app-btn">Reject</button>
+                            </div>
+                        </li>
+
+                    {% endfor %}
+                </ul>
+            
+            {% else %}
+                <div class="no-applicants-message">No applicants found for this job.</div>
+            {% endif %}
             
         </div>
     </div>

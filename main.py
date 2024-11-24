@@ -1,7 +1,7 @@
 import sqlite3
 import bcrypt
-from flask import Flask, jsonify,render_template,request,session,redirect,url_for,flash,logging
-
+from flask import Flask, jsonify,render_template,request,session,redirect,url_for,flash,logging,send_from_directory
+import os
 
 
 
@@ -14,6 +14,131 @@ def hello_world():
     if 'username' not in session:
         return render_template('home.html')
     return render_template('home.html')
+
+
+ALLOWED_EXTENSIONS = ['mp4']
+app.config['MAX_CONTENT_LENGTH'] = 30 * 1024 * 1024
+# app.config['UPLOAD_FOLDER'] = os.path.join(app.static_folder, 'videos')
+app.config['UPLOAD_FOLDER'] = 'static/videos'
+
+@app.errorhandler(413)
+def too_large(e):
+    return "File is too large. Please upload a file smaller than 30 MB.", 413
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/upload',methods=['GET','POST'])
+def upload():
+    if 'username' not in session:
+        return redirect(url_for('login'))
+    
+    username = session['username']
+    job_id = request.form.get('job_id')
+    video = request.files.get('video')
+    print(f"Username: {username}, Job ID: {job_id}, Video: {video}")
+
+    conn = sqlite3.connect('mixmuse_users.db')
+    c = conn.cursor()
+    c.execute('SELECT COUNT(*) FROM applicants WHERE username = ? AND job_id = ?', (username, job_id))
+    already_applied = c.fetchone()[0] > 0
+    if already_applied:
+        conn.close()
+        flash("You have already applied for this job.")
+        return redirect(url_for('posts'))
+
+
+
+    if video and video.filename.endswith('.mp4'):
+        # Save the video file
+        video_filename = f"{username}_{job_id}.mp4"  # Create a unique filename
+        video_path = os.path.join(app.config['UPLOAD_FOLDER'], video_filename)
+        video.save(video_path)
+
+        relative_video_path = f"{video_filename}"
+
+        # Insert the data into the SQLite database
+        c.execute('INSERT INTO applicants (username, job_id, video_path) VALUES (?, ?, ?)',
+                  (username, job_id, relative_video_path))
+        conn.commit()
+        conn.close()
+
+        return redirect(url_for('posts'))  # Redirect to a success page or wherever you want
+
+        
+    return "Invalid file format", 400
+
+@app.route('/videos/<filename>')
+def audition_video(filename):
+    try:
+        # Get the directory path relative to the current file
+        videos_dir = os.path.join('static', 'videos')
+        full_path = os.path.join(videos_dir, filename)
+        print(f"Requested filename: {filename}")
+        print(f"Looking in directory: {videos_dir}")
+        print(f"Full path: {full_path}")
+        print(f"File exists: {os.path.exists(full_path)}")
+        return send_from_directory(videos_dir, filename)
+    except Exception as e:
+        print(f"Error serving video: {str(e)}")
+        return str(e), 404
+    
+
+@app.route('/viewappliprofile/<user>')
+def viewappliprofile(user):
+    if 'username' in session:
+        connection = sqlite3.connect('mixmuse_users.db')
+        cursor = connection.cursor()
+        username = session['username']
+        query = "SELECT * from users WHERE username = ?"
+        cursor.execute(query,(user,))
+        user_data = cursor.fetchone()
+        is_own_profile = session.get('username') == user 
+        connection.close()
+        return render_template('profile.html', user_data=user_data,is_own_profile=is_own_profile,username=username)
+
+
+@app.route('/vapplicants/<int:job_id>')
+def vapplicants(job_id):
+    connection = sqlite3.connect('mixmuse_users.db')
+    cursor = connection.cursor()
+    username = session['username']
+
+    query = "SELECT * FROM users WHERE username = ?"
+    cursor.execute(query, (username,))
+    user_data = cursor.fetchone()
+
+    # Fetch job details based on job_id
+    cursor.execute("SELECT username,video_path FROM applicants WHERE job_id = ?", (job_id,))
+    applicants = cursor.fetchall()
+
+
+
+    connection.close()
+    
+
+    return render_template('viewappli.html', user_data=user_data,applicants=applicants,username=username)
+
+
+
+
+
+@app.route('/job/<int:job_id>')
+def job_details(job_id):
+    # Fetch the job details from the database
+    conn = sqlite3.connect('mixmuse_users.db')
+    c = conn.cursor()
+    c.execute('SELECT * FROM jobs WHERE id = ?', (job_id,))
+    job = c.fetchone()  # Assuming job is a single record
+    conn.close()
+
+    # Check if job is found
+    if job is None:
+        return "Job not found", 404
+
+    # Render the template with the job data
+    return render_template('reqexp.html', job=job)
+
 
 
 

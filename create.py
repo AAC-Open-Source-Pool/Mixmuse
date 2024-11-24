@@ -5,8 +5,15 @@ connection = sqlite3.connect("mixmuse_users.db")
 cursor = connection.cursor()
 
 try:
-    cursor.execute("ALTER TABLE posts ADD COLUMN username TEXT")
-    print("Column 'username' added successfully.")
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS applicants (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT NOT NULL,
+            job_id TEXT NOT NULL,
+            video_path TEXT NOT NULL
+        )
+    ''')
+    print("Table added successfully.")
 except sqlite3.Error as e:
     print(f"An error occurred: {e}")
 finally:
