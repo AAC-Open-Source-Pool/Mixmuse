@@ -47,32 +47,39 @@ To use this project, follow these steps:
 1.⁠ ⁠*Clone the repository*:  
    ```bash  
    git clone <repository_url>  
-   cd Mixmuse  
+   cd Mixmuse
+   ```
 
 2.  *Set up a virtual environment*:
 
-python -m venv env  
+```python -m venv env  
 source env/bin/activate  # On Windows: env\Scripts\activate
+```
 
 3.⁠ ⁠*Install dependencies*:
-
+```
 pip install flask
+```
 
 4.⁠ ⁠*Set up environment variables*:
 
  --Create a .env file in the root directory and add:
-SECRET_KEY=my_secret_key_123
-DATABASE_URL=sqlite:///path/to/mixmuse_users.db  
+```SECRET_KEY=my_secret_key_123
+DATABASE_URL=sqlite:///path/to/mixmuse_users.db
+``` 
 
 
 5. *Run the application*:
+   ```
     python main.py
+   ```
 
 
 6.⁠ ⁠*Access the application*:
 Open your browser and navigate to:
-
-http://localhost:5000  
+   ```
+http://localhost:5000
+   ``` 
 
 --
 
