@@ -50,7 +50,7 @@ To use this project, follow these steps:
    cd Mixmuse
    ```
 
-2.  *Set up a virtual environment*:
+2. *Set up a virtual environment*:
 
 ```python -m venv env  
 source env/bin/activate  # On Windows: env\Scripts\activate
@@ -70,9 +70,9 @@ DATABASE_URL=sqlite:///path/to/mixmuse_users.db
 
 
 5. *Run the application*:
-   ```
-    python main.py
-   ```
+```
+python main.py
+```
 
 
 6.⁠ ⁠*Access the application*:
@@ -84,7 +84,8 @@ http://localhost:5000
 --
 
 ## Preview
-Screenshot of the project:
+<p>Screenshot of the project:</p>
+<img src = "https://i.imgur.com/7G0cZGj_d.webp?maxwidth=760&fidelity=grand" alt = "IndexUI"> 
 
 
 --
