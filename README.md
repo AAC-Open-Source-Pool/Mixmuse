@@ -10,13 +10,12 @@
 <b>Team Member 5:</b><p> Vamshi</p>
 
 
-## Abstract  
-Introducing a dynamic online platform tailored for music creators and composers, where collaboration meets creativity. Imagine a space where directors seeking the perfect soundtrack for their scenes can seamlessly connect with a diverse community of songwriters, singers, and bands. Directors post their scene descriptions, and talented musicians respond with clips showcasing their work. The director then selects the ideal collaborators, forming a cohesive group to bring their vision to life. Welcome to the future of music collaboration, where possibilities are endless and talent knows no bounds
+
 
 ---
 
 ## Table of Contents  
-•⁠  ⁠[Introduction](#introduction)  
+•⁠  ⁠[Abstract](#abstract)  
 •⁠  ⁠[Requirements](#requirements)  
 •⁠  ⁠[How to Use](#how-to-use)  
 •⁠  ⁠[Preview](#preview)  
@@ -24,8 +23,8 @@ Introducing a dynamic online platform tailored for music creators and composers,
 
 ---
 
-## Introduction  
-MixMuse is a web application that allows users to create, explore, and share music mixes. Built using Flask, HTML, CSS, and JavaScript, MixMuse provides a user-friendly interface for music enthusiasts
+## Abstract  
+Introducing a dynamic online platform tailored for music creators and composers, where collaboration meets creativity. Imagine a space where directors seeking the perfect soundtrack for their scenes can seamlessly connect with a diverse community of songwriters, singers, and bands. Directors post their scene descriptions, and talented musicians respond with clips showcasing their work. The director then selects the ideal collaborators, forming a cohesive group to bring their vision to life. Welcome to the future of music collaboration, where possibilities are endless and talent knows no bounds
 
 ---
 
